@@ -4,7 +4,7 @@ services:
     name: ai-summarizer-backend
     env: python
     region: oregon
-    buildCommand: pip install -r backend/requirements.txt
+    buildCommand: pip install -r backend/requirements.txt && python backend/download_nltk_data.py
     startCommand: cd backend && gunicorn app.main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT
     envVars:
       - key: HF_TOKEN
