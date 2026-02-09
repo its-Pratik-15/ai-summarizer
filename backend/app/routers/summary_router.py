@@ -33,8 +33,8 @@ async def summarize_file(
     custom_prompt: Optional[str] = Form(None)
 ):
     # Validate file type - check both content_type and filename extension
-    allowed_types = ["text/plain", "text/markdown", "text/csv", "application/json", "text/x-markdown"]
-    allowed_extensions = [".txt", ".md", ".csv", ".json", ".markdown"]
+    allowed_types = ["text/plain", "text/markdown", "text/csv", "application/json", "application/pdf", "text/x-markdown"]
+    allowed_extensions = [".txt", ".md", ".csv", ".json", ".pdf", ".markdown"]
     
     file_extension = None
     if file.filename:
