@@ -1,0 +1,48 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with gradient -->
+  <rect width="512" height="512" rx="128" fill="url(#gradient)"/>
+  
+  <!-- Document icon with lines representing text -->
+  <g transform="translate(128, 96)">
+    <!-- Document background -->
+    <rect x="0" y="0" width="256" height="320" rx="16" fill="white" opacity="0.95"/>
+    
+    <!-- Text lines (full) -->
+    <rect x="32" y="48" width="192" height="12" rx="6" fill="url(#lineGradient)" opacity="0.8"/>
+    <rect x="32" y="80" width="192" height="12" rx="6" fill="url(#lineGradient)" opacity="0.7"/>
+    <rect x="32" y="112" width="192" height="12" rx="6" fill="url(#lineGradient)" opacity="0.6"/>
+    <rect x="32" y="144" width="192" height="12" rx="6" fill="url(#lineGradient)" opacity="0.5"/>
+    
+    <!-- Arrow pointing down (compression symbol) -->
+    <g transform="translate(128, 180)">
+      <path d="M 0,-20 L 0,20" stroke="url(#arrowGradient)" stroke-width="8" stroke-linecap="round"/>
+      <path d="M -15,10 L 0,25 L 15,10" stroke="url(#arrowGradient)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </g>
+    
+    <!-- Summarized text lines (shorter) -->
+    <rect x="32" y="230" width="140" height="12" rx="6" fill="url(#lineGradient)" opacity="0.9"/>
+    <rect x="32" y="262" width="120" height="12" rx="6" fill="url(#lineGradient)" opacity="0.8"/>
+  </g>
+  
+  <!-- AI sparkle effect in corner -->
+  <g transform="translate(400, 112)">
+    <circle cx="0" cy="0" r="8" fill="white" opacity="0.9"/>
+    <path d="M 0,-20 L 0,20 M -20,0 L 20,0" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+  </g>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#667eea"/>
+      <stop offset="100%" stop-color="#764ba2"/>
+    </linearGradient>
+    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#667eea"/>
+      <stop offset="100%" stop-color="#764ba2"/>
+    </linearGradient>
+    <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#667eea"/>
+      <stop offset="100%" stop-color="#764ba2"/>
+    </linearGradient>
+  </defs>
+</svg>
