@@ -65,10 +65,8 @@ function Docs() {
                     <h4>Supported File Types:</h4>
                     <ul>
                         <li>.txt - Plain text</li>
-                        <li>.md - Markdown</li>
                         <li>.csv - CSV files</li>
                         <li>.json - JSON files</li>
-                        <li>.pdf - PDF documents</li>
                     </ul>
 
                     <h4>File Size Limits:</h4>
