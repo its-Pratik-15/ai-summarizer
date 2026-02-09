@@ -1,0 +1,25 @@
+services:
+  # Backend API
+  - type: web
+    name: ai-summarizer-backend
+    env: python
+    region: oregon
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && gunicorn app.main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT
+    envVars:
+      - key: HF_TOKEN
+        sync: false
+      - key: FRONTEND_URL
+        value: https://ai-summarizer-frontend.onrender.com
+    healthCheckPath: /api/health
+
+  # Frontend
+  - type: web
+    name: ai-summarizer-frontend
+    env: node
+    region: oregon
+    buildCommand: cd frontend && npm install && npm run build
+    startCommand: cd frontend && npm run preview -- --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://ai-summarizer-backend.onrender.com/api
