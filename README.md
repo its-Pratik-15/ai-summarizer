@@ -2,12 +2,14 @@
 
 A modern, full-stack document summarization application powered by Facebook's BART-CNN model via HuggingFace Inference API. Features a beautiful React frontend with multiple summarization styles and support for various file formats including PDFs.
 
+> [View Detailed Technical Documentation →](DEVELOPMENT.md)
+
 ![Tech Stack](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white)
 ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
 ![HuggingFace](https://img.shields.io/badge/HuggingFace-FFD21E?style=flat&logo=huggingface&logoColor=black)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Features](#features)
 - [Tech Stack](#tech-stack)
@@ -19,7 +21,9 @@ A modern, full-stack document summarization application powered by Facebook's BA
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
 
-## ✨ Features
+> [View Detailed Technical Documentation](DEVELOPMENT.md)
+
+## Features
 
 - **Multiple Summarization Styles**: Brief, Standard, Detailed, and Bullet Points
 - **File Upload Support**: .txt, .md, .csv, .json, and .pdf files
@@ -30,7 +34,7 @@ A modern, full-stack document summarization application powered by Facebook's BA
 - **Responsive Design**: Works seamlessly on desktop and mobile devices
 - **Real-time Processing**: Fast summarization with HuggingFace Inference API
 
-## 🛠 Tech Stack
+## Tech Stack
 
 ### Backend
 - **FastAPI**: Modern Python web framework for building APIs
@@ -46,7 +50,7 @@ A modern, full-stack document summarization application powered by Facebook's BA
 - **Vite**: Fast build tool and dev server
 - **CSS3**: Modern styling with gradients and animations
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 ### Prerequisites
 
@@ -123,7 +127,7 @@ npm run dev
 
 The application will be available at `http://localhost:5174`
 
-## 📖 Usage
+## Usage
 
 ### Web Interface
 
@@ -166,7 +170,7 @@ curl -X POST http://localhost:8000/api/summarize-file \
 curl http://localhost:8000/api/health
 ```
 
-## 📚 API Documentation
+## API Documentation
 
 ### Endpoints
 
@@ -222,7 +226,7 @@ Check API health status.
 | `detailed` | Comprehensive | 230 tokens | 60 tokens | Research, technical docs |
 | `bullet_points` | Key points as bullets | 160 tokens | 30 tokens | Easy scanning, notes |
 
-## 🎯 Development Journey
+## Development Journey
 
 ### Initial Model Selection: Google Flan-T5
 
@@ -412,7 +416,7 @@ for page in pdf_reader.pages:
 - Scanned PDFs require OCR (not implemented)
 - Complex layouts may have formatting issues
 
-## 🎨 Design Decisions
+## Design Decisions
 
 ### Architecture
 
@@ -470,7 +474,7 @@ for page in pdf_reader.pages:
 - Text length validation
 - Sentence structure validation
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ai-summarizer/
@@ -508,7 +512,7 @@ ai-summarizer/
 └── README.md                       # This file
 ```
 
-## 🧪 Testing
+## Testing
 
 Run the comprehensive test suite:
 
@@ -524,7 +528,7 @@ Tests include:
 - Error handling
 - Performance benchmarks
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please follow these steps:
 
@@ -534,21 +538,29 @@ Contributions are welcome! Please follow these steps:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **HuggingFace** for the Inference API and model hosting
 - **Facebook AI** for the BART model
 - **NLTK Team** for natural language processing tools
 - **FastAPI** and **React** communities for excellent documentation
 
-## 📧 Contact
+## Contact
 
 For questions or feedback, please open an issue on GitHub.
 
 ---
 
-**Built with ❤️ using FastAPI, React, and BART-CNN**
+## Additional Resources
+
+- **[Technical Documentation (DEVELOPMENT.md)](DEVELOPMENT.md)** - Detailed development journey, challenges, and solutions
+- **[API Documentation](#api-documentation)** - Complete API reference
+- **[Test Suite](test_api.py)** - Comprehensive API tests
+
+---
+
+**Built with using FastAPI, React, and BART-CNN**
