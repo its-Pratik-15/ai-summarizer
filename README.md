@@ -538,7 +538,7 @@ This project includes a `render.yaml` configuration for easy deployment.
 1. Create a new Web Service on Render
 2. Connect your GitHub repository
 3. Set root directory to `backend`
-4. Build Command: `pip install -r requirements.txt`
+4. Build Command: `pip install -r requirements.txt && python download_nltk_data.py`
 5. Start Command: `gunicorn app.main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT`
 6. Add environment variables:
    - `HF_TOKEN`: Your HuggingFace API token
