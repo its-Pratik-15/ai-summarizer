@@ -23,28 +23,23 @@ function Home() {
         const selectedFile = e.target.files[0]
         if (selectedFile) {
             // Check file type
-            const validTypes = ['.txt', '.md', '.csv', '.json', '.pdf']
+            const validTypes = ['.txt', '.csv', '.json']
             const fileExt = '.' + selectedFile.name.split('.').pop().toLowerCase()
 
             if (!validTypes.includes(fileExt)) {
-                setError('Invalid file type. Please upload .txt, .md, .csv, .json, or .pdf files.')
+                setError('Invalid file type. Please upload .txt, .csv, or .json files.')
                 return
             }
 
             setFile(selectedFile)
 
-            // Read file content for text files only (not PDF)
-            if (fileExt !== '.pdf') {
-                const reader = new FileReader()
-                reader.onload = (event) => {
-                    const content = event.target.result
-                    setText(content)
-                }
-                reader.readAsText(selectedFile)
-            } else {
-                // For PDF, just show a message
-                setText(`PDF file selected: ${selectedFile.name}\n\nClick "Generate Summary" to process the PDF.`)
+            // Read file content and display in textarea
+            const reader = new FileReader()
+            reader.onload = (event) => {
+                const content = event.target.result
+                setText(content)
             }
+            reader.readAsText(selectedFile)
             setError('')
         }
     }
@@ -140,7 +135,7 @@ function Home() {
                     <input
                         ref={fileInputRef}
                         type="file"
-                        accept=".txt,.md,.csv,.json,.pdf"
+                        accept=".txt,.csv,.json"
                         onChange={handleFileChange}
                         disabled={loading}
                         style={{ display: 'none' }}
@@ -152,7 +147,7 @@ function Home() {
                             <polyline points="17 8 12 3 7 8" />
                             <line x1="12" y1="3" x2="12" y2="15" />
                         </svg>
-                        {file ? file.name : 'Choose File (.txt, .md, .csv, .json, .pdf)'}
+                        {file ? file.name : 'Choose File (.txt, .csv, .json)'}
                     </label>
                     {file && (
                         <button
