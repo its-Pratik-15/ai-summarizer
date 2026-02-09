@@ -35,40 +35,44 @@ class LLMService:
         } if self.hf_token else {"Content-Type": "application/json"}
         
         # Input validation
-        self.text_area_min_words = 150
+        self.text_area_min_words = 50  # Reduced from 150 for better UX
         self.text_area_max_words = 1500
-        self.file_upload_min_words = 300
+        self.file_upload_min_words = 100  # Reduced from 300
         self.file_upload_max_words = 4000
         
         # Presets for different summary styles
         self.presets = {
             "brief": {
                 "max_length": 60,
-                "min_length": 20,
+                "min_length": 10,  # Reduced from 20
                 "num_beams": 4,
                 "length_penalty": 1.2,
-                "do_sample": False
+                "do_sample": False,
+                "early_stopping": True
             },
             "standard": {
                 "max_length": 140,
-                "min_length": 50,
+                "min_length": 30,  # Reduced from 50
                 "num_beams": 4,
                 "length_penalty": 1.0,
-                "do_sample": False
+                "do_sample": False,
+                "early_stopping": True
             },
             "detailed": {
                 "max_length": 230,
-                "min_length": 110,
+                "min_length": 60,  # Reduced from 110
                 "num_beams": 5,
                 "length_penalty": 0.9,
-                "do_sample": False
+                "do_sample": False,
+                "early_stopping": True
             },
             "bullet": {
                 "max_length": 160,
-                "min_length": 40,
+                "min_length": 30,  # Reduced from 40
                 "num_beams": 4,
                 "length_penalty": 1.0,
-                "do_sample": False
+                "do_sample": False,
+                "early_stopping": True
             }
         }
 
@@ -103,6 +107,35 @@ class LLMService:
                 detail=f"{source}: Text too long. Maximum {max_words} words allowed. Your text has {word_count} words."
             )
 
+    def _preprocess_text(self, text: str) -> str:
+        """Clean and preprocess text for summarization."""
+        # Remove excessive whitespace and normalize
+        text = re.sub(r'\s+', ' ', text)
+        
+        # Remove special characters that might cause issues
+        text = re.sub(r'[\x00-\x08\x0b-\x0c\x0e-\x1f\x7f-\x9f]', '', text)
+        
+        # Remove multiple consecutive punctuation
+        text = re.sub(r'([.!?]){2,}', r'\1', text)
+        
+        # Ensure text ends with proper punctuation
+        text = text.strip()
+        if text and text[-1] not in '.!?':
+            text += '.'
+        
+        # Ensure minimum sentence structure
+        # BART needs at least a few sentences to work properly
+        sentences = re.split(r'[.!?]+', text)
+        sentences = [s.strip() for s in sentences if s.strip()]
+        
+        if len(sentences) < 3:
+            raise HTTPException(
+                status_code=400,
+                detail="Text must contain at least 3 complete sentences for summarization."
+            )
+        
+        return text
+
     def _split_into_sentences(self, text: str):
         """Split text into sentences using NLTK or fallback regex."""
         if sent_tokenize:
@@ -118,12 +151,18 @@ class LLMService:
         if preset not in self.presets:
             raise ValueError(f"Unknown preset '{preset}'. Choose one of: {list(self.presets)}")
         
-        # Add instruction prefix
-        instruction = "Summarize the entire text covering ALL major themes and key ideas. Do not focus on only one example.\n\n"
-        input_text = instruction + text
+        # Preprocess text
+        clean_text = self._preprocess_text(text)
+        
+        # Check if text is too short after cleaning
+        if len(clean_text.split()) < 30:
+            raise HTTPException(
+                status_code=400,
+                detail="Text is too short after preprocessing. Please provide more content."
+            )
         
         payload = {
-            "inputs": input_text,
+            "inputs": clean_text,
             "parameters": self.presets[preset]
         }
         
@@ -137,9 +176,18 @@ class LLMService:
             )
         except HTTPError as e:
             content = resp.text if 'resp' in locals() else "<no response body>"
+            # Parse error message for better user feedback
+            error_msg = content
+            try:
+                error_data = resp.json()
+                if isinstance(error_data, dict) and 'error' in error_data:
+                    error_msg = error_data['error']
+            except:
+                pass
+            
             raise HTTPException(
                 status_code=502,
-                detail=f"HTTP error: {e}. Response: {content}"
+                detail=f"Model error: {error_msg}. Try with different text or shorter content."
             )
         except RequestException as e:
             raise HTTPException(
@@ -151,9 +199,16 @@ class LLMService:
         
         # Handle HF error responses
         if isinstance(data, dict) and data.get("error"):
+            error_msg = data['error']
+            # Provide user-friendly error messages
+            if "index out of range" in error_msg.lower():
+                raise HTTPException(
+                    status_code=400,
+                    detail="Text format issue. Please ensure your text has proper sentences and punctuation."
+                )
             raise HTTPException(
                 status_code=502,
-                detail=f"Hugging Face error: {data['error']}"
+                detail=f"Model error: {error_msg}"
             )
         
         # Extract summary from response
