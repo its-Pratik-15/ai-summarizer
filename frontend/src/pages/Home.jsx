@@ -129,7 +129,7 @@ function Home() {
 
     return (
         <div className="home-page">
-            <h1>AI Text Summarizer</h1>
+            <h1>SummarizeAI</h1>
             <p className="subtitle">Powered by BART-CNN</p>
 
             <div className="input-section">

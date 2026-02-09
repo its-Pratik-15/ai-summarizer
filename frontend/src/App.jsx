@@ -18,7 +18,7 @@ function App() {
           </Routes>
         </main>
         <footer className="footer">
-          <p>&copy; 2026 AI Summarizer. Powered by BART-CNN.</p>
+          <p>&copy; 2026 SummarizeAI. Powered by BART-CNN.</p>
         </footer>
       </div>
     </Router>

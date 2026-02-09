@@ -47,32 +47,31 @@ class LLMService:
         # Presets for different summary styles
         self.presets = {
             "brief": {
-                "max_length": 60,
-                "min_length": 10,  # Reduced from 20
-                "num_beams": 4,
-                "length_penalty": 1.2,
-                "do_sample": False,
+                "max_length": 70,      
+                "min_length": 20,       
+                "length_penalty": 1.2,  
+                "do_sample": False,    
                 "early_stopping": True
             },
             "standard": {
-                "max_length": 140,
-                "min_length": 30,  # Reduced from 50
+                "max_length": 150,   
+                "min_length": 50,        
                 "num_beams": 4,
                 "length_penalty": 1.0,
                 "do_sample": False,
                 "early_stopping": True
             },
             "detailed": {
-                "max_length": 230,
-                "min_length": 60,  # Reduced from 110
+                "max_length": 250,     
+                "min_length": 100,      
                 "num_beams": 5,
-                "length_penalty": 0.9,
+                "length_penalty": 0.9, 
                 "do_sample": False,
                 "early_stopping": True
             },
             "bullet": {
-                "max_length": 160,
-                "min_length": 30,  # Reduced from 40
+                "max_length": 180,      
+                "min_length": 60,     
                 "num_beams": 4,
                 "length_penalty": 1.0,
                 "do_sample": False,

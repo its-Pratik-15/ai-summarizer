@@ -221,10 +221,10 @@ Check API health status.
 
 | Style | Description | Max Length | Min Length | Use Case |
 |-------|-------------|------------|------------|----------|
-| `brief` | Quick overview | 60 tokens | 10 tokens | Headlines, previews |
-| `standard` | Balanced summary | 140 tokens | 30 tokens | General use (recommended) |
-| `detailed` | Comprehensive | 230 tokens | 60 tokens | Research, technical docs |
-| `bullet_points` | Key points as bullets | 160 tokens | 30 tokens | Easy scanning, notes |
+| `brief` | Quick overview | 70 tokens | 20 tokens | Headlines, previews |
+| `standard` | Balanced summary | 150 tokens | 50 tokens | General use (recommended) |
+| `detailed` | Comprehensive | 250 tokens | 100 tokens | Research, technical docs |
+| `bullet_points` | Key points as bullets | 180 tokens | 60 tokens | Easy scanning, notes |
 
 ## Development Journey
 

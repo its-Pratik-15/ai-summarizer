@@ -234,6 +234,8 @@ test_cases = [
 #### `max_length` & `min_length`
 Controls output token count (not words!)
 
+**Note:** `max_length` is the total sequence length (input + output), while `max_new_tokens` is only the generated tokens. For summarization, `max_length` is more commonly used.
+
 ```python
 # Token ≈ 0.75 words (English)
 # 60 tokens ≈ 45 words
@@ -250,6 +252,15 @@ Controls output token count (not words!)
 
 # Sweet spot for brief
 {"max_length": 60, "min_length": 10}  # ✅
+
+# Alternative concise configuration (more aggressive)
+{
+    "max_new_tokens": 200,
+    "min_length": 120,
+    "num_beams": 5,
+    "do_sample": False,
+    "length_penalty": 2.0
+}  # ⚠️ Forces longer, more detailed output
 ```
 
 #### `num_beams`
@@ -307,31 +318,35 @@ Stop when all beams finish
 ```python
 PRESETS = {
     "brief": {
-        "max_length": 60,      # ~45 words
-        "min_length": 10,      # ~7 words
-        "num_beams": 4,        # Good quality
-        "length_penalty": 1.2, # Slightly prefer longer
+        "max_length": 70,        # Slightly higher to allow more context
+        "min_length": 20,        # Ensures brief summary still covers main points
+        "num_beams": 4,          # Beam search for quality
+        "length_penalty": 1.2,   # Encourages concise output
+        "do_sample": False,      # Deterministic
         "early_stopping": True
     },
     "standard": {
-        "max_length": 140,     # ~105 words (BART's sweet spot)
-        "min_length": 30,      # ~22 words
+        "max_length": 150,       # Covers more examples
+        "min_length": 50,        # Prevents too short standard summary
         "num_beams": 4,
-        "length_penalty": 1.0, # Balanced
+        "length_penalty": 1.0,
+        "do_sample": False,
         "early_stopping": True
     },
     "detailed": {
-        "max_length": 230,     # ~172 words
-        "min_length": 60,      # ~45 words
-        "num_beams": 5,        # Higher quality for detailed
-        "length_penalty": 0.9, # Allow flexibility
+        "max_length": 250,       # Covers all main points
+        "min_length": 100,       # Ensures detailed output
+        "num_beams": 5,
+        "length_penalty": 0.9,   # Slightly favors longer output
+        "do_sample": False,
         "early_stopping": True
     },
     "bullet": {
-        "max_length": 160,     # ~120 words
-        "min_length": 30,      # ~22 words
+        "max_length": 180,       # Enough to split into bullets
+        "min_length": 60,        # Ensures enough sentences to bullet
         "num_beams": 4,
         "length_penalty": 1.0,
+        "do_sample": False,
         "early_stopping": True
     }
 }

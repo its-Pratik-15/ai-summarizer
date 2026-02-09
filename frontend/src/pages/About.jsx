@@ -40,19 +40,19 @@ function About() {
                 <div className="style-info">
                     <div className="style-card">
                         <h3>Brief</h3>
-                        <p>Quick overview in 20-60 tokens. Perfect for headlines and quick previews.</p>
+                        <p>Quick overview in 20-70 tokens. Perfect for headlines and quick previews.</p>
                     </div>
                     <div className="style-card">
                         <h3>Standard</h3>
-                        <p>Balanced summary in 50-140 tokens. Best for general use and most natural output.</p>
+                        <p>Balanced summary in 50-150 tokens. Best for general use and most natural output.</p>
                     </div>
                     <div className="style-card">
                         <h3>Detailed</h3>
-                        <p>Comprehensive summary in 110-230 tokens. Ideal for research papers and technical documents.</p>
+                        <p>Comprehensive summary in 100-250 tokens. Ideal for research papers and technical documents.</p>
                     </div>
                     <div className="style-card">
                         <h3>Bullet Points</h3>
-                        <p>Key points formatted as bullets. Great for easy scanning and note-taking.</p>
+                        <p>Key points formatted as bullets in 60-180 tokens. Great for easy scanning and note-taking.</p>
                     </div>
                 </div>
             </section>
