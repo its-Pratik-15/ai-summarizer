@@ -528,6 +528,35 @@ Tests include:
 - Error handling
 - Performance benchmarks
 
+## Deployment
+
+### Deploy to Render
+
+This project includes a `render.yaml` configuration for easy deployment.
+
+**Backend Deployment:**
+1. Create a new Web Service on Render
+2. Connect your GitHub repository
+3. Set root directory to `backend`
+4. Build Command: `pip install -r requirements.txt`
+5. Start Command: `gunicorn app.main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT`
+6. Add environment variables:
+   - `HF_TOKEN`: Your HuggingFace API token
+   - `FRONTEND_URL`: Your frontend URL (e.g., `https://your-app.onrender.com`)
+
+**Frontend Deployment:**
+1. Create a new Web Service on Render
+2. Connect your GitHub repository
+3. Set root directory to `frontend`
+4. Build Command: `npm install && npm run build`
+5. Start Command: `npm run preview -- --host 0.0.0.0 --port $PORT`
+6. Add environment variable:
+   - `VITE_API_BASE_URL`: Your backend API URL (e.g., `https://your-api.onrender.com/api`)
+
+**Alternative: Use render.yaml**
+- Push `render.yaml` to your repository
+- Render will automatically detect and deploy both services
+
 ## Contributing
 
 Contributions are welcome! Please follow these steps:
