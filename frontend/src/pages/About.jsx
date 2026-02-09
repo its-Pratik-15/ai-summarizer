@@ -29,8 +29,8 @@ function About() {
                     <li><strong>Multiple Styles:</strong> Choose between brief, standard, detailed, or bullet point summaries</li>
                     <li><strong>Optimized Parameters:</strong> Each style uses carefully tuned parameters for best results</li>
                     <li><strong>Quality Instruction:</strong> Summaries cover all major themes and key ideas</li>
-                    <li><strong>Input Validation:</strong> Supports 150-1500 words for text area input</li>
-                    <li><strong>File Upload:</strong> Supports .txt, .md, .csv, .json, and .pdf files (300-4000 words)</li>
+                    <li><strong>Input Validation:</strong> Supports 50-1500 words for text area input</li>
+                    <li><strong>File Upload:</strong> Supports .txt, .md, .csv, .json, and .pdf files (100-4000 words)</li>
                     <li><strong>PDF Support:</strong> Automatically extracts text from PDF documents</li>
                 </ul>
             </section>

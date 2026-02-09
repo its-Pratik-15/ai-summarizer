@@ -9,6 +9,7 @@ function Home() {
     const [summary, setSummary] = useState('')
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
+    const [showToast, setShowToast] = useState(false)
     const fileInputRef = useRef(null)
 
     // Handle text input change
@@ -119,6 +120,13 @@ function Home() {
         }
     }
 
+    // Copy to clipboard with toast notification
+    const handleCopy = () => {
+        navigator.clipboard.writeText(summary)
+        setShowToast(true)
+        setTimeout(() => setShowToast(false), 3000)
+    }
+
     return (
         <div className="home-page">
             <h1>AI Text Summarizer</h1>
@@ -166,7 +174,7 @@ function Home() {
                     id="text-input"
                     value={text}
                     onChange={handleTextChange}
-                    placeholder="Paste your text here..."
+                    placeholder="Paste your text here (50-1500 words, minimum 3 sentences)..."
                     rows={10}
                     disabled={loading}
                 />
@@ -222,13 +230,16 @@ function Home() {
                     <pre className="summary-output">{summary}</pre>
                     <button
                         className="btn-copy"
-                        onClick={() => {
-                            navigator.clipboard.writeText(summary)
-                            alert('Summary copied to clipboard!')
-                        }}
+                        onClick={handleCopy}
                     >
                         📋 Copy to Clipboard
                     </button>
+                </div>
+            )}
+
+            {showToast && (
+                <div className="toast">
+                    ✓ Copied to clipboard!
                 </div>
             )}
         </div>

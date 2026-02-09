@@ -23,7 +23,7 @@ function Docs() {
 
                     <h4>Parameters:</h4>
                     <ul>
-                        <li><code>text</code> (string, required): The text to summarize (150-1500 words)</li>
+                        <li><code>text</code> (string, required): The text to summarize (50-1500 words, minimum 3 sentences)</li>
                         <li><code>style</code> (string, optional): Summarization style
                             <ul>
                                 <li><code>"standard"</code> - Balanced summary (default)</li>
@@ -72,7 +72,7 @@ function Docs() {
                     </ul>
 
                     <h4>File Size Limits:</h4>
-                    <p>300-4000 words</p>
+                    <p>100-4000 words (minimum 3 complete sentences)</p>
 
                     <h4>Response:</h4>
                     <p>Same as /summarize endpoint</p>

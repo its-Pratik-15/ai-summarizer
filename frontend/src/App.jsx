@@ -1,12 +1,27 @@
-import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Home from './pages/Home'
+import About from './pages/About'
+import Docs from './pages/Docs'
 import './App.css'
-import Summarizer from './Summarizer'
 
 function App() {
   return (
-    <>
-      <Summarizer />
-    </>
+    <Router>
+      <div className="app">
+        <Navbar />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/docs" element={<Docs />} />
+          </Routes>
+        </main>
+        <footer className="footer">
+          <p>&copy; 2026 AI Summarizer. Powered by BART-CNN.</p>
+        </footer>
+      </div>
+    </Router>
   )
 }
 
