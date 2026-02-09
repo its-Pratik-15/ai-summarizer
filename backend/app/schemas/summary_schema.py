@@ -6,6 +6,7 @@ class SummaryStyle(str, Enum):
     BRIEF = "brief"
     DETAILED = "detailed"
     BULLET = "bullet_points"
+    STANDARD = "standard"  # Direct BART-CNN output
     CUSTOM = "custom"
 
 class SummaryRequest(BaseModel):
