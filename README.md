@@ -578,6 +578,10 @@ This project is licensed under the MIT License.
 - **NLTK Team** for natural language processing tools
 - **FastAPI** and **React** communities for excellent documentation
 
+## Performance
+
+The application is optimized for fast response times with HuggingFace's cloud infrastructure.
+
 ## Contact
 
 For questions or feedback, please open an issue on GitHub.
