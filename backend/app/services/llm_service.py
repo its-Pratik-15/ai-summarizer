@@ -27,6 +27,7 @@ load_dotenv()
 class LLMService:
     """
     Simplified LLM Summarization Service using BART-CNN with direct HTTP requests.
+    Provides high-quality abstractive summarization with multiple style presets.
     """
     
     def __init__(self):
