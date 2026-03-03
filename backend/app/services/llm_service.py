@@ -39,7 +39,7 @@ class LLMService:
             "Content-Type": "application/json"
         } if self.hf_token else {"Content-Type": "application/json"}
         
-        # Input validation
+        # Input validation limits
         self.text_area_min_words = 50  # Reduced from 150 for better UX
         self.text_area_max_words = 1500
         self.file_upload_min_words = 100  # Reduced from 300
