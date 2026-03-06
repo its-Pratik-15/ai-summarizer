@@ -15,7 +15,7 @@ function Summarizer({ onBack }) {
     const [loadingDots, setLoadingDots] = useState('')
     const fileInputRef = useRef(null)
 
-    // Update word count
+    // Update word count when text changes
     const handleTextChange = (e) => {
         const newText = e.target.value
         setText(newText)
