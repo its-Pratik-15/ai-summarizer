@@ -10,14 +10,14 @@ function App() {
     <Router>
       <div className="app">
         <Navbar />
-        <main className="main-content">
+        <main className="main-content" role="main">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/docs" element={<Docs />} />
           </Routes>
         </main>
-        <footer className="footer">
+        <footer className="footer" role="contentinfo">
           <p>&copy; 2026 SummarizeAI. Powered by BART-CNN.</p>
         </footer>
       </div>
