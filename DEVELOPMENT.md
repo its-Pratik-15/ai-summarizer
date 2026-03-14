@@ -9,7 +9,8 @@ This document provides detailed technical information about the development proc
 3. [Parameter Optimization](#parameter-optimization)
 4. [Error Handling Strategy](#error-handling-strategy)
 5. [Performance Considerations](#performance-considerations)
-6. [Future Improvements](#future-improvements)
+6. [Testing Strategy](#testing-strategy)
+7. [Future Improvements](#future-improvements)
 
 ## Model Selection Journey
 
