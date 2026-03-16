@@ -1,5 +1,5 @@
 services:
-  # Backend API
+  # Backend API Service
   - type: web
     name: ai-summarizer-backend
     env: python
@@ -13,7 +13,7 @@ services:
         value: https://ai-summarizer-frontend.onrender.com
     healthCheckPath: /api/health
 
-  # Frontend
+  # Frontend Application
   - type: web
     name: ai-summarizer-frontend
     env: node
