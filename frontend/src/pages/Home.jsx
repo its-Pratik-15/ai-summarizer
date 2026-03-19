@@ -18,7 +18,7 @@ function Home() {
         setError('')
     }
 
-    // Handle file upload
+    // Handle file upload with validation
     const handleFileChange = (e) => {
         const selectedFile = e.target.files[0]
         if (selectedFile) {
