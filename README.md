@@ -581,6 +581,7 @@ This project is licensed under the MIT License.
 ## Performance
 
 The application is optimized for fast response times with HuggingFace's cloud infrastructure.
+Typical summarization takes 2-5 seconds depending on text length and selected style.
 
 ## Contact
 
